@@ -45,5 +45,6 @@ int main() {
     } catch (const std::exception& e) {
         std::cerr << "Unexpected error: " << e.what() << std::endl;
     }
+    std::cout << "\n----- End of tests -----\n";
     return 0;
 }

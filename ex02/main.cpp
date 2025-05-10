@@ -23,6 +23,9 @@ int main()
             std::cout << "\nTesting with mid grade bureaucrat:\n";
             midGrade.signForm(shrub);
             midGrade.executeForm(shrub);
+
+            std::cout << "\nAfter signing with mid grade bureaucrat:\n";
+            std::cout << shrub << std::endl;
         }
 
         std::cout << "\n-------- Test RobotomyRequestForm --------\n";
@@ -49,6 +52,9 @@ int main()
             std::cout << "\nTesting complete process with high grade bureaucrat:\n";
             highGrade.signForm(pardon);
             highGrade.executeForm(pardon);
+
+            std::cout << "\nAfter signing with high grade bureaucrat:\n";
+            std::cout << pardon << std::endl;
         }
 
         std::cout << "\n-------- Test Invalid Grade Creation --------\n";
@@ -74,5 +80,6 @@ int main()
     {
         std::cout << "Unexpected exception: " << e.what() << std::endl;
     }
+    std::cout << "\n----- End of tests -----\n";
     return 0;
 }
