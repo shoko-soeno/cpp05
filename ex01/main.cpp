@@ -1,49 +1,49 @@
 #include "Bureaucrat.h"
+#include "Form.h"
 
 int main() {
     try {
-        // Test valid grade
-        Bureaucrat bob("Bob", 75);
-        std::cout << bob << std::endl;
-
-        // Test increment and decrement
-        bob.incrementGrade();
-        std::cout << "After increment: " << bob << std::endl;
-        bob.decrementGrade();
-        std::cout << "After decrement: " << bob << std::endl;
-
-        // Test too high grade
+        std::cout << "\n-------- Valid Form --------\n";
+        Form valid_form("valid form", 50, 30);
+        std::cout << valid_form << std::endl;
+        std::cout << "\n-------- Too high --------\n";
         try {
-            Bureaucrat high("High", 0);
-        } catch (const Bureaucrat::GradeTooHighException& e) {
-            std::cerr << "Error: " << e.what() << std::endl;
+            Form form_too_high("too high", 0, 30);
+        } catch (const std::exception& e) {
+            std::cout << "Exception: " << e.what() << std::endl;
         }
-
-        // Test too low grade
+        std::cout << "\n-------- Too low --------\n";
         try {
-            Bureaucrat low("Low", 151);
-        } catch (const Bureaucrat::GradeTooLowException& e) {
-            std::cerr << "Error: " << e.what() << std::endl;
+            Form form_too_low("too low", 50, 151);
+        } catch (const std::exception& e) {
+            std::cerr << "Exception: " << e.what() << std::endl;
         }
-
-        // Test grade boundaries
-        Bureaucrat top("Top", 1);
+        std::cout << "\n-------- sign success --------\n";
         try {
-            top.incrementGrade();
-        } catch (const Bureaucrat::GradeTooHighException& e) {
-            std::cerr << "Error: " << e.what() << std::endl;
+            Bureaucrat bureaucrat1("bureaucrat1", 50);
+            Form form_to_sign("to sign", 50, 30);
+            std::cout << "Before signing: "
+                  << form_to_sign << std::endl;
+            bureaucrat1.signForm(form_to_sign);
+            std::cout << "after signing: "
+                  << form_to_sign << std::endl;
+        } catch (const std::exception& e) {
+            std::cerr << "Exception: " << e.what() << std::endl;
         }
-
-        Bureaucrat bottom("Bottom", 150);
+        std::cout << "\n-------- sign fail --------\n";
         try {
-            bottom.decrementGrade();
-        } catch (const Bureaucrat::GradeTooLowException& e) {
-            std::cerr << "Error: " << e.what() << std::endl;
+            Bureaucrat bureaucrat2("bureaucrat2", 100);
+            Form form_to_sign_fail("to sign", 20, 10);
+            std::cout << "Before signing: "
+                  << form_to_sign_fail << std::endl;
+            bureaucrat2.signForm(form_to_sign_fail);
+            std::cout << "after signing: "
+                  << form_to_sign_fail << std::endl;
+        } catch (const std::exception& e) {
+            std::cerr << "Exception: " << e.what() << std::endl;
         }
-
     } catch (const std::exception& e) {
         std::cerr << "Unexpected error: " << e.what() << std::endl;
     }
-
     return 0;
 }

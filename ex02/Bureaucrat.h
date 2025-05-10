@@ -4,9 +4,9 @@
 # include <string>
 # include <iostream>
 # include <stdexcept>
-# include "Form.h"
+# include "AForm.h"
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 private:
@@ -24,7 +24,8 @@ public:
     int                 getGrade() const;
     void                incrementGrade();
     void                decrementGrade();
-    void                signForm(Form& form);
+    void                signForm(AForm& form);
+    void                executeForm(AForm const &form) const;
 
     class GradeTooHighException : public std::exception {
     public:

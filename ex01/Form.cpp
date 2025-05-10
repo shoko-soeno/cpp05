@@ -10,7 +10,7 @@ Form::Form(const std::string& name, int gradeToSign, int gradeToExecute) : _name
         throw GradeTooLowException();
 }
 
-Form::Form(const Form& src) : _name(src._name), _gradeToSign(src._gradeToSign), _gradeToExecute(src._gradeToExecute) {}
+Form::Form(const Form& src) : _name(src._name), _isSigned(src._isSigned), _gradeToSign(src._gradeToSign), _gradeToExecute(src._gradeToExecute) {}
 
 Form &Form::operator=(const Form& src)
 {
@@ -18,6 +18,8 @@ Form &Form::operator=(const Form& src)
         _isSigned = src._isSigned;
     return *this;
 }
+
+Form::~Form() {}
 
 const std::string& Form::getName() const
 {

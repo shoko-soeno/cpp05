@@ -2,31 +2,30 @@
 
 int main() {
     try {
-        // Test valid grade
+        std::cout << "\n-------- Valid grade --------\n";
         Bureaucrat bob("Bob", 75);
         std::cout << bob << std::endl;
-
-        // Test increment and decrement
+        std::cout << "\n-------- Test increment and decrement --------\n";
         bob.incrementGrade();
         std::cout << "After increment: " << bob << std::endl;
         bob.decrementGrade();
         std::cout << "After decrement: " << bob << std::endl;
 
-        // Test too high grade
+        std::cout << "\n-------- Test too high --------\n";
         try {
             Bureaucrat high("High", 0);
         } catch (const Bureaucrat::GradeTooHighException& e) {
             std::cerr << "Error: " << e.what() << std::endl;
         }
 
-        // Test too low grade
+        std::cout << "\n-------- Test too low--------\n";
         try {
             Bureaucrat low("Low", 151);
         } catch (const Bureaucrat::GradeTooLowException& e) {
             std::cerr << "Error: " << e.what() << std::endl;
         }
 
-        // Test grade boundaries
+        std::cout << "\n-------- Test edge cases--------\n";
         Bureaucrat top("Top", 1);
         try {
             top.incrementGrade();
